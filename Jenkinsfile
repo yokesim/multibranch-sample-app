@@ -9,6 +9,16 @@ pipeline {
         sh './gradlew clean check --no-daemon'
       }
     }
+    stage('cat README') {
+      when {
+         branch "*1"
+      }
+      steps {
+         sh '''
+	   cat README.md
+	 '''
+      }
+    }
   }
   post {
     always {
